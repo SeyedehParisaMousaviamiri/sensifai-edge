@@ -4,34 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home - Your Website</title>
+  <meta name="description" content="Your company tagline or description for SEO" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header>
-     <nav class="navbar">
-    <div class="logo">YourLogo</div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="product-development.html">Product Development</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+    <nav class="navbar" aria-label="Primary Navigation">
+      <div class="logo">YourLogo</div>
+      <ul class="nav-links" id="navLinks" role="menubar">
+        <li role="none"><a href="index.html" class="active" role="menuitem">Home</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About Us</a></li>
+        <li role="none"><a href="product-development.html" role="menuitem">Product Development</a></li>
+        <li role="none"><a href="team.html" role="menuitem">Team</a></li>
+        <li role="none"><a href="news.html" role="menuitem">News</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact Us</a></li>
       </ul>
-       <div class="hamburger" id="hamburger">
-      ☰
-    </div>
+      <!-- Use button for accessibility -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        ☰
+      </button>
     </nav>
   </header>
 
   <main>
-    <h1>Welcome to the Home Page</h1>
-    <p>This is your home page content.</p>
+    <section class="hero" role="banner">
+      <h1>Your Bold Headline Here</h1>
+      <p>Your powerful tagline or value proposition.</p>
+      <a href="#" class="cta-btn">Learn more</a>
+      <div class="hero-image-container">
+        <img src="images/hero-image.jpg" alt="Illustration representing our core service" />
+      </div>
+    </section>
+
+    <section class="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">What Sets Us Apart</h2>
+      <p>A clear explanation of your core technology or mission.</p>
+    </section>
+
+    <section class="features" aria-label="Features">
+      <div class="container">
+        <article class="feature">
+          <img src="images/icon1.png" alt="Icon representing Feature 1" />
+          <h3>Feature 1</h3>
+          <p>Description of feature 1 benefits and highlights.</p>
+        </article>
+        <article class="feature">
+          <img src="images/icon2.png" alt="Icon representing Feature 2" />
+          <h3>Feature 2</h3>
+          <p>Description of feature 2 benefits and highlights.</p>
+        </article>
+        <article class="feature">
+          <img src="images/icon3.png" alt="Icon representing Feature 3" />
+          <h3>Feature 3</h3>
+          <p>Description of feature 3 benefits and highlights.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="deep-dive" aria-labelledby="deepdive-title">
+      <div class="container">
+        <div class="deep-dive-text">
+          <h2 id="deepdive-title">How It Works</h2>
+          <p>More in-depth technical insight or storytelling.</p>
+        </div>
+        <div class="deep-dive-image">
+          <img src="images/tech.jpg" alt="A picture related to the technology" />
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     &copy; 2025 Your Company. All rights reserved.
   </footer>
+
   <!-- Link your JS file -->
   <script src="js/script.js"></script>
 </body>
