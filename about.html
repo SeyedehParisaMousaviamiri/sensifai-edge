@@ -4,7 +4,266 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About Us - Your Website</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* --- CSS START --- */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #333;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #0073e6;
+      border-bottom: 2px solid #0073e6;
+    }
+
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Hero Section Styles */
+    .hero {
+      background: url('images/about-hero.jpg') no-repeat center/cover;
+      padding: 120px 20px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero-text-container h1 {
+      position: relative;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      z-index: 2;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 100px 15px;
+      }
+      .hero-text-container h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Origin Section */
+    .origin-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 20px;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .origin-content {
+      flex: 1;
+    }
+
+    .origin-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+      color: #003366;
+      text-align: left;
+    }
+
+    .origin-text {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: #4a4a4a;
+      max-width: 600px;
+      margin: 0;
+      text-align: justify;
+    }
+
+    .origin-image-wrapper {
+      flex: 1;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15);
+    }
+
+    .origin-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .origin-image-wrapper:hover .origin-image {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 900px) {
+      .origin-container {
+        flex-direction: column;
+        padding: 60px 15px;
+      }
+      .origin-title {
+        text-align: center;
+        font-size: 2rem;
+      }
+      .origin-text {
+        max-width: 100%;
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+      }
+      .origin-image-wrapper {
+        max-width: 100%;
+      }
+    }
+
+    /* Core Values Section */
+    .core-values {
+      background-color: #f8f9fb;
+      padding: 100px 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 60px;
+      color: #003366;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto 60px;
+      color: #555;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .value-item {
+      text-align: center;
+      background: #fff;
+      padding: 30px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .value-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .value-item h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #003366;
+    }
+
+    .value-item p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #555;
+      text-align: justify;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+    }
+    /* --- CSS END --- */
+  </style>
 </head>
 <body>
 
@@ -37,7 +296,7 @@
 
     <!-- Our origin and roots -->
     <section class="origin">
-      <div class="container origin-container">
+      <div class="origin-container">
         <!-- Text Section -->
         <div class="origin-content">
           <h2 class="origin-title">Made in Aarhus</h2>
@@ -55,7 +314,7 @@
 
     <!-- Core Values -->
     <section class="core-values">
-      <div class="container">
+      <div>
         <h2 class="section-title">Our Values</h2>
         <p class="section-subtitle">
           A short text about our values.
@@ -63,15 +322,15 @@
         <div class="values-grid">
           <article class="value-item">
             <h3>Value1</h3>
-            <p>Value1 description.</p>
+            <p>Detailed description about value 1.</p>
           </article>
           <article class="value-item">
             <h3>Value2</h3>
-            <p>Value2 description.</p>
+            <p>Detailed description about value 2.</p>
           </article>
           <article class="value-item">
             <h3>Value3</h3>
-            <p>Value3 description.</p>
+            <p>Detailed description about value 3.</p>
           </article>
         </div>
       </div>
@@ -79,9 +338,28 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Your Company. All rights reserved.</p>
+     <p>&copy; 2025 Your Company. All rights reserved.</p>
   </footer>
 
-  <script src="js/script.js"></script>
+  <script>
+    // --- JS START ---
+    // Hamburger menu toggle for mobile navigation
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Optional: Close menu when clicking a nav link on mobile
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+        }
+      });
+    });
+    // --- JS END ---
+  </script>
 </body>
 </html>

@@ -5,7 +5,266 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home - Your Website</title>
   <meta name="description" content="Your company tagline or description for SEO" />
-  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* styles.css content */
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #333;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #0073e6;
+      border-bottom: 2px solid #0073e6;
+    }
+
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Hero Section Styles */
+    .hero {
+      background: url('images/hero-bg.jpg') no-repeat center/cover;
+      padding: 120px 20px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      z-index: 2;
+    }
+
+    .hero p {
+      position: relative;
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      z-index: 2;
+    }
+
+    .hero .cta-btn {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #0073e6;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      z-index: 2;
+    }
+
+    .hero .cta-btn:hover {
+      background-color: #005bb5;
+      transform: translateY(-3px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 100px 15px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Overview Section */
+    .overview {
+      background-color: #f8f9fa;
+      padding: 80px 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .overview .container {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .overview h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #003366;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 60px 20px;
+      background: white;
+      text-align: center;
+    }
+
+    .features .container {
+      display: flex;
+      justify-content: space-around;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      flex: 1 1 250px;
+      max-width: 300px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .feature img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    .feature h3 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    /* Deep Dive Section */
+    .deep-dive {
+      padding: 80px 20px;
+      background-color: #f8f9fa;
+    }
+
+    .deep-dive .container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .deep-dive-text {
+      flex: 1 1 400px;
+    }
+
+    .deep-dive-text h2 {
+      color: #003366;
+      margin-bottom: 20px;
+    }
+
+    .deep-dive-image {
+      flex: 1 1 400px;
+      text-align: center;
+    }
+
+    .deep-dive-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -30,15 +289,17 @@
     <section class="hero" role="banner">
       <h1>Your Bold Headline Here</h1>
       <p>Your powerful tagline or value proposition.</p>
-      <a href="#" class="cta-btn">Learn more</a>
+      <a href="#" class="cta-btn">read more</a>
       <div class="hero-image-container">
         <img src="images/hero-image.jpg" alt="Illustration representing our core service" />
       </div>
     </section>
 
     <section class="overview" aria-labelledby="overview-title">
-      <h2 id="overview-title">What Sets Us Apart</h2>
-      <p>A clear explanation of your core technology or mission.</p>
+      <div class="container">
+        <h2 id="overview-title">What Sets Us Apart</h2>
+        <p>A clear explanation of your core technology or mission.</p>
+      </div>
     </section>
 
     <section class="features" aria-label="Features">
@@ -78,7 +339,16 @@
      <p>&copy; 2025 Your Company. All rights reserved.</p>
   </footer>
 
-  <!-- Link your JS file -->
-  <script src="js/script.js"></script>
+  <script>
+    // Hamburger menu toggle with aria-expanded update for accessibility
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !isExpanded);
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>

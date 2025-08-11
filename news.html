@@ -4,13 +4,292 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>News - Your Website</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Reset & basics */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #333;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #0073e6;
+      border-bottom: 2px solid #0073e6;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Mobile navbar */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Featured News */
+    .featured-news {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      background: #f9f9f9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 1rem;
+      flex-direction: row-reverse;
+    }
+
+    .featured-image {
+      width: 100%;
+      max-width: 450px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 12px;
+    }
+
+    .featured-content {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-content h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+      color: #0077b5;
+    }
+
+    .featured-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .btn-see-more {
+      text-decoration: none;
+      background-color: #0077b5;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-see-more:hover {
+      background-color: #005a85;
+    }
+
+    /* Filter Bar */
+    .news-filter {
+      margin: 2rem auto;
+      max-width: 1200px;
+      text-align: center;
+    }
+
+    .news-filter .filter-btn {
+      background-color: transparent;
+      border: 2px solid #0077b5;
+      color: #0077b5;
+      padding: 0.5rem 1.2rem;
+      margin: 0 0.5rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .news-filter .filter-btn:hover,
+    .news-filter .filter-btn.active {
+      background-color: #0077b5;
+      color: white;
+      border-color: #0077b5;
+    }
+
+    /* News Grid */
+    .news-grid {
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-image img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 1rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-content h3 {
+      margin: 0 0 0.5rem 0;
+      color: #0077b5;
+    }
+
+    .news-content p {
+      flex-grow: 1;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    .read-more {
+      font-weight: 600;
+      color: #0077b5;
+      align-self: flex-start;
+      transition: color 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: #005a85;
+    }
+
+    /* Pagination */
+    .pagination {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .pagination a {
+      color: #0077b5;
+      margin: 0 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .pagination a.active,
+    .pagination a:hover {
+      background-color: #0077b5;
+      color: white;
+      border-color: #0077b5;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #003366;
+      color: #f0f0f0;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .featured-news {
+        flex-direction: column;
+      }
+
+      .featured-image {
+        max-width: 100%;
+        height: 250px;
+      }
+
+      .featured-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
-     <nav class="navbar">
-    <div class="logo">YourLogo</div>
-    <ul class="nav-links" id="navLinks">
+    <nav class="navbar">
+      <div class="logo">YourLogo</div>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="product-development.html">Product Development</a></li>
@@ -18,21 +297,114 @@
         <li><a href="news.html" class="active">News</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
-      <div class="hamburger" id="hamburger">
-      ☰
-    </div>
+      <div class="hamburger" id="hamburger">☰</div>
     </nav>
   </header>
 
   <main>
-    <h1>Welcome to the News Page</h1>
-    <p>This is your News page content.</p>
+    <!-- Featured News/Event Banner -->
+    <section class="featured-news">
+      <img src="images/featured-news.jpg" alt="Featured News" class="featured-image" />
+      <div class="featured-content">
+        <h1>Exciting Product Launch</h1>
+        <p>We are thrilled to announce the launch of our latest product that revolutionizes your workflow and transforms productivity.</p>
+        <a href="news-details1.html" class="btn-see-more">Read More</a>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="news-filter">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="news">News</button>
+      <button class="filter-btn" data-filter="publication">Publication</button>
+      <button class="filter-btn" data-filter="events">Events</button>
+    </section>
+
+    <!-- News Grid -->
+    <section class="news-grid">
+      <!-- News article 1 -->
+      <article class="news-card" data-category="news">
+        <div class="news-image">
+          <img src="images/news1.jpg" alt="News 1" />
+        </div>
+        <div class="news-content">
+          <h3>Exciting Product Launch</h3>
+          <p>We are thrilled to announce the launch of our latest product that revolutionizes your workflow.</p>
+          <a href="news-details1.html" class="read-more">Read More &raquo;</a>
+        </div>
+      </article>
+
+      <!-- News article 2 -->
+      <article class="news-card" data-category="publication">
+        <div class="news-image">
+          <img src="images/news2.jpg" alt="News 2" />
+        </div>
+        <div class="news-content">
+          <h3>Company Expansion</h3>
+          <p>Our company is expanding into new markets to better serve our customers worldwide.</p>
+          <a href="news-details2.html" class="read-more">Read More &raquo;</a>
+        </div>
+      </article>
+
+      <!-- News article 3 -->
+      <article class="news-card" data-category="events">
+        <div class="news-image">
+          <img src="images/news3.jpg" alt="News 3" />
+        </div>
+        <div class="news-content">
+          <h3>New Partnership Announcement</h3>
+          <p>We have partnered with industry leaders to bring you even more innovative solutions.</p>
+          <a href="news-details3.html" class="read-more">Read More &raquo;</a>
+        </div>
+      </article>
+
+      <!-- Add more articles as needed -->
+    </section>
+
+    <!-- Pagination -->
+    <nav class="pagination" aria-label="Page navigation">
+      <a href="#">&laquo; Previous</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Next &raquo;</a>
+    </nav>
   </main>
 
   <footer>
     &copy; 2025 Your Company. All rights reserved.
   </footer>
-  <!-- Link your JS file -->
-  <script src="js/script.js"></script>
+
+ <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Filter buttons functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const newsCards = document.querySelectorAll('.news-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all buttons
+        filterBtns.forEach(button => button.classList.remove('active'));
+        // Add active to clicked button
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        newsCards.forEach(card => {
+          if(filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>

@@ -4,13 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Team - Your Website</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    /* Your full CSS code here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #333;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #0073e6;
+      border-bottom: 2px solid #0073e6;
+    }
+
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Team Section */
+
+    .section-label {
+  color:#003366; /* Lego blue */
+  font-weight: bold;
+  letter-spacing: 0.1em;
+    }
+
+    .team-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .team-section h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .team-intro {
+      max-width: 700px;
+      margin-bottom: 40px;
+      color: #444;
+    }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Each team card: picture left, info right */
+    .team-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1rem;
+      border-radius: 8px;
+      position: relative;
+      border: none; /* removed border */
+      box-shadow: none; /* in case your styles add shadows */
+      background: transparent; /* or white if you want */
+    }
+
+    /* Picture container to handle hover */
+    .team-photo-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .team-photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Slight zoom on hover */
+    .team-photo-container:hover img {
+      transform: scale(1.05);
+    }
+
+    /* LinkedIn icon hidden by default */
+    .linkedin-icon {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: rgba(0, 119, 181, 0.85); /* LinkedIn blue */
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+      font-size: 18px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    /* Show LinkedIn icon on photo hover */
+    .team-photo-container:hover .linkedin-icon {
+      opacity: 1;
+    }
+
+    /* Team info */
+    .team-info {
+      flex: 1;
+    }
+
+    .team-info h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.5rem;
+    }
+
+    .role {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Bio button */
+    .bio-btn {
+  background-color: #0077b5; /* LinkedIn blue */
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease; /* add color transition */
+}
+
+.bio-btn:hover {
+  background-color:#003366;
+  color: #ffffff; /* logo color on hover */
+}
+
+    /* Bio text hidden by default */
+    .bio {
+      display: none;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+      color: #333;
+      text-align: justify;
+    }
+
+    /* Show bio when active */
+    .bio.active {
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #003366;  /* dark navy like Innatera */
+      color: #f0f0f0;       /* light text */
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;   /* not fixed */
+      margin-top: 4rem;
+    }
+
+  </style>
 </head>
 <body>
   <header>
-     <nav class="navbar">
-    <div class="logo">YourLogo</div>
-    <ul class="nav-links" id="navLinks">
+    <nav class="navbar">
+      <div class="logo">YourLogo</div>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="product-development.html">Product Development</a></li>
@@ -19,12 +263,12 @@
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
       <div class="hamburger" id="hamburger">
-      ☰
-    </div>
+        ☰
+      </div>
     </nav>
   </header>
 
- <main>
+  <main>
     <section class="team-section">
       <h3 class="section-label">OUR TEAM</h3>
       <h2>Team Description</h2>
@@ -39,7 +283,6 @@
           <div class="team-photo-container">
             <img src="images/member1.jpg" alt="Member 1" />
             <a href="https://www.linkedin.com/in/member1" target="_blank" rel="noopener" class="linkedin-icon" aria-label="LinkedIn Profile of Member 1">
-              <!-- LinkedIn SVG icon -->
               <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="18" height="18">
                 <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-1 0-1.7-.7-1.7-1.5 0-.9.7-1.5 1.8-1.5s1.7.6 1.7 1.5c0 .8-.7 1.5-1.8 1.5zm13.5 11.3h-3v-5.3c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.3-.1.7-.1 1.1v5.1h-3v-10h3v1.3c.4-.6 1.2-1.3 2.9-1.3 2.1 0 3.7 1.4 3.7 4.4v5.6z"/>
               </svg>
@@ -88,14 +331,51 @@
             <p class="bio" id="bio3">Bio description 3.</p>
           </div>
         </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-card">
+          <div class="team-photo-container">
+            <img src="images/member4.jpg" alt="Member 4" />
+            <a href="https://www.linkedin.com/in/member4" target="_blank" rel="noopener" class="linkedin-icon" aria-label="LinkedIn Profile of Member 4">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="18" height="18">
+                <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.3c-1 0-1.7-.7-1.7-1.5 0-.9.7-1.5 1.8-1.5s1.7.6 1.7 1.5c0 .8-.7 1.5-1.8 1.5zm13.5 11.3h-3v-5.3c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.3-.1.7-.1 1.1v5.1h-3v-10h3v1.3c.4-.6 1.2-1.3 2.9-1.3 2.1 0 3.7 1.4 3.7 4.4v5.6z"/>
+              </svg>
+            </a>
+          </div>
+          <div class="team-info">
+            <h3>Member4</h3>
+            <p class="role">Role 4</p>
+            <button class="bio-btn" aria-expanded="false" aria-controls="bio4" aria-label="Toggle bio of Member 4">Bio</button>
+            <p class="bio" id="bio4">Bio description 4.</p>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Your Company. All rights reserved.</p>
+    <p>© 2025 Your Company. All rights reserved.</p>
   </footer>
-  <!-- Link your JS file -->
-  <script src="js/script.js"></script>
+
+  <script>
+    // Hamburger menu toggle
+    document.getElementById('hamburger').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('show');
+    });
+
+    // Bio toggle buttons
+    const bioButtons = document.querySelectorAll('.bio-btn');
+    bioButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const bioId = button.getAttribute('aria-controls');
+        const bio = document.getElementById(bioId);
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        if (bio) {
+          bio.classList.toggle('active');
+          button.setAttribute('aria-expanded', !isExpanded);
+        }
+      });
+    });
+  </script>
 </body>
 </html>

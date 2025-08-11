@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exciting Product Launch - Your Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar container */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* Logo */
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      color: #333;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: #0073e6;
+      border-bottom: 2px solid #0073e6;
+    }
+
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Featured News Section */
+    .featured-news {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem auto;
+      background: #f9f9f9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 1200px;
+      padding: 1rem;
+      flex-direction: row-reverse; /* content left, image right */
+    }
+
+    .featured-content {
+      flex: 1;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-content h1 {
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+      color: #0077b5;
+    }
+
+    .featured-content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .btn-see-more {
+      text-decoration: none;
+      background-color: #0077b5;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-see-more:hover {
+      background-color: #005a85;
+    }
+
+    .featured-image {
+      width: 100%;
+      max-width: 450px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 12px;
+    }
+
+    /* Back to news link styling */
+    .back-to-news {
+      display: inline-block;
+      margin: 1.5rem auto;
+      background-color: #0077b5;
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-to-news:hover {
+      background-color: #005a85;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #003366;
+      color: #f0f0f0;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      position: relative;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .featured-news {
+        flex-direction: column; /* stack vertically on smaller screens */
+      }
+
+      .featured-image {
+        max-width: 100%;
+        height: 250px;
+      }
+
+      .featured-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">YourLogo</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="product-development.html">Product Development</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="news.html" class="active">News</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger">☰</div>
+    </nav>
+  </header>
+
+  <main class="news-detail-page">
+    <section class="featured-news" aria-label="Featured news">
+      <div class="featured-content">
+        <h1>Exciting Product Launch</h1>
+        <p>This product introduces cutting-edge features designed to streamline your daily tasks,
+    improve collaboration, and enhance overall efficiency. Join us for the launch event
+    where we will showcase live demonstrations and answer all your questions.</p>
+        
+      </div>
+      <img src="images/featured-news.jpg" alt="Exciting product launch" class="featured-image" />
+    </section>
+
+    <a href="news.html" class="back-to-news">&#8592; Back to News</a>
+  </main>
+
+  <footer>
+  &copy; 2025 Your Company. All rights reserved.
+</footer>
+
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
