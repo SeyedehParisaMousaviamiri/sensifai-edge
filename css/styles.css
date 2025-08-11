@@ -308,6 +308,140 @@ ul {
     text-align: justify;
   }
 }
+.origin-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.origin-content {
+  flex: 1;
+}
+
+.origin-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  color: #003366;
+  text-align: left; /* ensures heading aligns left */
+}
+
+.origin-text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: #4a4a4a;
+  max-width: 600px;
+  margin: 0;
+  text-align: justify; /* keeps paragraph justified */
+}
+
+.origin-image-wrapper {
+  flex: 1;
+  max-width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 51, 102, 0.15);
+}
+
+.origin-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.origin-image-wrapper:hover .origin-image {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .origin-container {
+    flex-direction: column;
+    padding: 60px 15px;
+  }
+  .origin-title {
+    text-align: center;
+    font-size: 2rem;
+  }
+  .origin-text {
+    max-width: 100%;
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 40px;
+  }
+  .origin-image-wrapper {
+    max-width: 100%;
+  }
+}
+/* Core Values Section */
+.core-values {
+  background-color: #f8f9fb;
+  padding: 100px 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+  color: #003366;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 60px;
+  color: #555;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.value-item {
+  text-align: center;
+  background: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.value-icon {
+  width: 80px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.value-item h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #003366;
+}
+
+.value-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+}
 
   footer {
   text-align: center;

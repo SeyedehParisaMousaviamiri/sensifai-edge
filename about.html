@@ -8,15 +8,15 @@
 </head>
 <body>
   <header>
-     <nav class="navbar">
-    <div class="logo">YourLogo</div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About Us</a></li>
-        <li><a href="product-development.html">Product Development</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+     <nav class="navbar" aria-label="Primary Navigation">
+      <div class="logo">YourLogo</div>
+      <ul class="nav-links" id="navLinks" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="about.html" class="active" role="menuitem">About Us</a></li>
+        <li role="none"><a href="product-development.html" role="menuitem">Product Development</a></li>
+        <li role="none"><a href="team.html" role="menuitem">Team</a></li>
+        <li role="none"><a href="news.html" role="menuitem">News</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact Us</a></li>
       </ul>
       <div class="hamburger" id="hamburger">
       ☰
@@ -25,9 +25,63 @@
   </header>
 
   <main>
-    <h1>Welcome to the About Us page</h1>
-    <p>This is the about page content.</p>
-  </main>
+     <!-- Hero/About Header -->
+    <section class="hero about-hero" role="banner" aria-label="About Us introduction">
+      <div class="hero-text-container">
+        <h1>About SensifAi Edge</h1>
+      </div>
+      <div class="hero-image-container">
+        <img src="images/about-hero.jpg" alt="Team working in a biotech lab" />
+      </div>
+    </section>
+
+    <!-- Our origin and roots -->
+     <section class="origin" aria-label="Our origin and roots">
+  <div class="container origin-container">
+    <!-- Text Section -->
+    <div class="origin-content">
+      <h2 class="origin-title">Made in Aarhus</h2>
+      <p class="origin-text">
+         Describe about origin and roots of the company
+      </p>
+    </div>
+
+    <!-- Image Section -->
+    <div class="origin-image-wrapper">
+      <img src="images/delft-skyline.jpg" alt="Skyline of Delft city" class="origin-image" />
+    </div>
+  </div>
+</section>
+
+<!-- Core Values -->
+<section class="core-values" aria-label="Our Core Values">
+  <div class="container">
+    <h2 class="section-title">Our Values</h2>
+    <p class="section-subtitle">
+      A short text about our values.
+    </p>
+    <div class="values-grid">
+      <article class="value-item">
+        <h3>Value1</h3>
+        <p>
+          Value1 descrition.
+        </p>
+      </article>
+      <article class="value-item">
+        <h3>Value2</h3>
+        <p>
+           Value2 descrition.        </p>
+      </article>
+      <article class="value-item">
+    
+        <h3>Value3</h3>
+        <p>
+          Value3 descrition.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
 
   <footer>
     &copy; 2025 Your Company. All rights reserved.
