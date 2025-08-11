@@ -499,6 +499,188 @@ ul {
   text-align: justify;
 }
 
+/* Team Section */
+.team-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.team-section h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.team-intro {
+  max-width: 700px;
+  margin-bottom: 40px;
+  color: #444;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* Team Card */
+.team-card {
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card img {
+  width: 100%;
+  height: auto;
+}
+
+.team-info {
+  padding: 20px;
+}
+
+.team-info h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  color: #003366;
+}
+
+.team-info p.role {
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.team-info p.bio {
+  font-size: 0.95rem;
+  color: #555;
+  text-align: justify;
+}
+
+.team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Each team card: picture left, info right */
+    .team-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+  border: none; /* removed border */
+  box-shadow: none; /* in case your styles add shadows */
+  background: transparent; /* or white if you want */
+}
+
+    /* Picture container to handle hover */
+    .team-photo-container {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .team-photo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Slight zoom on hover */
+    .team-photo-container:hover img {
+      transform: scale(1.05);
+    }
+
+    /* LinkedIn icon hidden by default */
+    .linkedin-icon {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: rgba(0, 119, 181, 0.85); /* LinkedIn blue */
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-decoration: none;
+      font-size: 18px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.3);
+    }
+
+    /* Show LinkedIn icon on photo hover */
+    .team-photo-container:hover .linkedin-icon {
+      opacity: 1;
+    }
+
+    /* Team info */
+    .team-info {
+      flex: 1;
+    }
+
+    .team-info h3 {
+      margin: 0 0 0.25rem 0;
+      font-size: 1.5rem;
+    }
+
+    .role {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Bio button */
+    .bio-btn {
+      background-color: #0077b5; /* LinkedIn blue */
+      color: white;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .bio-btn:hover {
+      background-color: #005582;
+    }
+
+    /* Bio text hidden by default */
+    .bio {
+      display: none;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    /* Show bio when active */
+    .bio.active {
+      display: block;
+    }
 
   footer {
   text-align: center;
